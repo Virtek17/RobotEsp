@@ -1,0 +1,7 @@
+.venv/
+models/
+*.zip
+__pycache__/
+.env
+.env.*
+!.env.example

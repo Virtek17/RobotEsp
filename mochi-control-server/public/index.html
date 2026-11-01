@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mochi — эмоции</title>
+  <style>
+    body { font: 16px system-ui, sans-serif; background: #111827; color: #f9fafb; margin: 0; }
+    main { max-width: 820px; margin: auto; padding: 28px 18px; }
+    h1 { margin-bottom: 4px; }
+    p { color: #cbd5e1; }
+    .settings { display: flex; gap: 8px; flex-wrap: wrap; margin: 22px 0; }
+    input { flex: 1; min-width: 180px; padding: 12px; border-radius: 10px; border: 1px solid #64748b; font: inherit; }
+    button { padding: 12px 17px; border: 1px solid #64748b; border-radius: 10px; background: #263b57; color: white; font: inherit; cursor: pointer; }
+    button:hover { background: #345477; }
+    button.active { background: #087e8b; border-color: #5eead4; }
+    button:disabled { opacity: .55; cursor: wait; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+    #status { min-height: 24px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Mochi</h1>
+  <p>Выберите эмоцию для OLED. Компьютер и ESP32 должны быть в одной домашней Wi-Fi сети.</p>
+  <form id="settings" class="settings">
+    <input id="ip" placeholder="IP платы, например 192.168.1.42" aria-label="IP платы" required>
+    <button type="submit">Сохранить IP</button>
+  </form>
+  <p id="status" role="status"></p>
+  <section style="margin: 20px 0; padding: 16px; border: 1px solid #64748b; border-radius: 10px">
+    <strong>Разговор с Мочи · голос и эмоции</strong>
+    <p>Удерживайте кнопку робота около секунды, произнесите короткую фразу и отпустите. До 4 секунд. Короткое касание меняет эмоцию. На OLED — только лица; текст ответа виден здесь.</p>
+    <p id="speech-status" role="status">Загрузка распознавания…</p>
+    <p id="transcript" style="color: white; white-space: pre-wrap"></p>
+    <p id="ai-status"></p>
+    <p id="ai-answer" style="color: #5eead4; white-space: pre-wrap"></p>
+    <button id="reset-dialog" type="button">Начать новый разговор</button>
+    <label style="display: block; margin-top: 12px"><input id="voice-enabled" type="checkbox" checked style="min-width: 0"> Голос через колонки ноутбука</label>
+    <button id="stop-voice" type="button">Остановить голос</button>
+    <p id="voice-status" role="status"></p>
+    <p id="speech-timing" style="font-size: 13px"></p>
+  </section>
+  <div id="emotions" class="grid"></div>
+</main>
+<script>
+  const ipInput = document.querySelector('#ip');
+  const status = document.querySelector('#status');
+  const grid = document.querySelector('#emotions');
+  const speechLabels = {
+    starting: 'Загрузка русской модели…', idle: 'Готов к записи',
+    recording: 'Робот слушает…', ready: 'Получаю запись с робота…',
+    recognizing: 'Распознаю на компьютере…', text: 'Текст отправлен на OLED',
+    thinking: 'Мочи думает…',
+    speaking: 'Мочи говорит…',
+    waiting_for_ip: 'Укажите IP платы',
+  };
+  async function refreshSpeech() {
+    try {
+      const data = await request('/api/stt');
+      document.querySelector('#speech-status').textContent = data.error || speechLabels[data.phase] || data.phase;
+      document.querySelector('#transcript').textContent = data.text || '';
+      document.querySelector('#ai-status').textContent = data.aiError ||
+        (data.ai?.configured ? `ИИ: ${data.ai.model} · только бесплатные модели` : 'ИИ ещё не подключён: заполните .env на компьютере. Пока показываю вашу фразу.');
+      document.querySelector('#ai-answer').textContent = data.answer ? `Мочи (${data.emotion || 'alive'}): ${data.answer}` : '';
+      if (data.voice) document.querySelector('#voice-enabled').checked = data.voice.enabled;
+      document.querySelector('#voice-status').textContent = data.voice?.error || data.voiceError ||
+        (data.voice?.speaking ? 'Озвучиваю через аудиовыход Windows' :
+          data.voice?.provider === 'fish' ? 'Голос: Fish Audio · s2.1-pro-free' : 'Голос: Windows');
+      const t = data.timings;
+      document.querySelector('#speech-timing').textContent = t ?
+        `Звук: ${t.downloadMs} мс · Речь: ${t.recognizeMs} мс · ИИ: ${t.aiMs || 0} мс · Текст: ${t.deliveryMs} мс · Всего: ${t.totalMs} мс` : '';
+    } catch (error) {
+      document.querySelector('#speech-status').textContent = error.message;
+    } finally { setTimeout(refreshSpeech, 250); }
+  }
+  refreshSpeech();
+  document.querySelector('#voice-enabled').onchange = async event => {
+    try { await request('/api/voice', {method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({enabled: event.target.checked})}); }
+    catch (error) { document.querySelector('#voice-status').textContent = error.message; }
+  };
+  document.querySelector('#stop-voice').onclick = async () => {
+    try { await request('/api/voice', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{"stop":true}'}); }
+    catch (error) { document.querySelector('#voice-status').textContent = error.message; }
+  };
+  document.querySelector('#reset-dialog').onclick = async () => {
+    try { await request('/api/ai/reset', {method: 'POST'}); }
+    catch (error) { document.querySelector('#ai-status').textContent = error.message; }
+  };
+
+  async function request(url, options) {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || 'Ошибка запроса');
+    return data;
+  }
+
+  async function refresh() {
+    try {
+      const data = await request('/api/emotions');
+      status.textContent = `Сейчас: ${data.current}`;
+      grid.replaceChildren();
+      for (const name of data.emotions) {
+        const button = document.createElement('button');
+        button.textContent = name;
+        button.className = name === data.current ? 'active' : '';
+        button.onclick = async () => {
+          button.disabled = true;
+          try {
+            await request('/api/emotion', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({emotion: name}),
+            });
+            await refresh();
+          } catch (error) {
+            status.textContent = error.message;
+            button.disabled = false;
+          }
+        };
+        grid.append(button);
+      }
+    } catch (error) {
+      status.textContent = error.message;
+      grid.replaceChildren();
+    }
+  }
+
+  document.querySelector('#settings').onsubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await request('/api/config', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ip: ipInput.value.trim()}),
+      });
+      await refresh();
+    } catch (error) {
+      status.textContent = error.message;
+    }
+  };
+
+  request('/api/config').then(({ip}) => {
+    ipInput.value = ip;
+    if (ip) refresh();
+    else status.textContent = 'Введите IP платы, показанный на OLED после подключения к Wi-Fi.';
+  });
+</script>
+</body>
+</html>

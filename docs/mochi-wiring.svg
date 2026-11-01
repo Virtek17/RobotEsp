@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1300" viewBox="0 0 1280 1300">
+<rect width="100%" height="100%" fill="#f5f7fb"/>
+<text x="54" y="32" fill="#17233b" font-size="35" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">МОЧИ · СХЕМА ПОДКЛЮЧЕНИЯ</text>
+<text x="54" y="85" fill="#17233b" font-size="22" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">ESP32-C3 Super Mini + OLED SSD1306 + сенсорная кнопка + INMP441</text>
+<rect x="54" y="132" width="1172" height="54" rx="10" fill="#fff3db" stroke="#e7c883" stroke-width="2"/>
+<text x="74" y="143" fill="#17233b" font-size="22" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">Подключать при отключённом USB. Питание модулей: только 3,3 В.</text>
+<rect x="54" y="250" width="356" height="860" rx="16" fill="#e9eff8" stroke="#bac9df" stroke-width="2"/>
+<text x="232" y="275" fill="#17233b" font-size="29" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="middle">ESP32-C3</text>
+<text x="232" y="313" fill="#17233b" font-size="22" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="middle">Super Mini</text>
+<rect x="850" y="250" width="376" height="248" rx="16" fill="#ffffff" stroke="#d4dce8" stroke-width="2"/>
+<text x="880" y="271" fill="#17233b" font-size="24" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">OLED 128×64 · SSD1306</text>
+<rect x="850" y="540" width="376" height="182" rx="16" fill="#ffffff" stroke="#d4dce8" stroke-width="2"/>
+<text x="880" y="558" fill="#17233b" font-size="23" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">СЕНСОРНАЯ КНОПКА</text>
+<rect x="850" y="790" width="376" height="306" rx="16" fill="#ffffff" stroke="#d4dce8" stroke-width="2"/>
+<text x="880" y="807" fill="#17233b" font-size="23" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">МИКРОФОН · INMP441</text>
+<polyline points="640,218 640,850" fill="none" stroke="#d33b40" stroke-width="5" stroke-linejoin="round"/>
+<polyline points="690,218 690,930" fill="none" stroke="#39465a" stroke-width="5" stroke-linejoin="round"/>
+<text x="640" y="199" fill="#d33b40" font-size="18" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="end">3,3 В</text>
+<text x="700" y="199" fill="#39465a" font-size="18" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">GND</text>
+<polyline points="410,340 640,340" fill="none" stroke="#d33b40" stroke-width="4" stroke-linejoin="round"/>
+<polyline points="410,380 850,380" fill="none" stroke="#39465a" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="410" cy="340" r="6" fill="#d33b40"/>
+<text x="392" y="325" fill="#d33b40" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="end">3V3</text>
+<circle cx="640" cy="340" r="6" fill="#d33b40"/>
+<circle cx="410" cy="380" r="6" fill="#39465a"/>
+<text x="392" y="365" fill="#39465a" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="end">GND</text>
+<circle cx="690" cy="380" r="6" fill="#39465a"/>
+<polyline points="640,340 850,340" fill="none" stroke="#d33b40" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="850" cy="340" r="6" fill="#d33b40"/>
+<text x="868" y="325" fill="#d33b40" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">VDD</text>
+<circle cx="850" cy="380" r="6" fill="#39465a"/>
+<text x="868" y="365" fill="#39465a" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">GND</text>
+<polyline points="410,420 850,420" fill="none" stroke="#2477ce" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="410" cy="420" r="6" fill="#2477ce"/>
+<text x="392" y="405" fill="#2477ce" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="end">GPIO20</text>
+<circle cx="850" cy="420" r="6" fill="#2477ce"/>
+<text x="868" y="405" fill="#2477ce" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">SDA</text>
+<polyline points="410,460 850,460" fill="none" stroke="#13855d" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="410" cy="460" r="6" fill="#13855d"/>
+<text x="392" y="445" fill="#13855d" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="end">GPIO21</text>
+<circle cx="850" cy="460" r="6" fill="#13855d"/>
+<text x="868" y="445" fill="#13855d" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">SCK / SCL</text>
+<polyline points="410,680 850,680" fill="none" stroke="#c57800" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="410" cy="680" r="6" fill="#c57800"/>
+<text x="392" y="665" fill="#c57800" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="end">GPIO3</text>
+<circle cx="850" cy="680" r="6" fill="#c57800"/>
+<text x="868" y="665" fill="#c57800" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">I/O</text>
+<polyline points="410,970 850,970" fill="none" stroke="#2477ce" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="410" cy="970" r="6" fill="#2477ce"/>
+<text x="392" y="955" fill="#2477ce" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="end">GPIO4</text>
+<circle cx="850" cy="970" r="6" fill="#2477ce"/>
+<text x="868" y="955" fill="#2477ce" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">SD</text>
+<polyline points="410,1010 850,1010" fill="none" stroke="#8055bd" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="410" cy="1010" r="6" fill="#8055bd"/>
+<text x="392" y="995" fill="#8055bd" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="end">GPIO5</text>
+<circle cx="850" cy="1010" r="6" fill="#8055bd"/>
+<text x="868" y="995" fill="#8055bd" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">WS</text>
+<polyline points="410,1050 850,1050" fill="none" stroke="#13855d" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="410" cy="1050" r="6" fill="#13855d"/>
+<text x="392" y="1035" fill="#13855d" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="end">GPIO6</text>
+<circle cx="850" cy="1050" r="6" fill="#13855d"/>
+<text x="868" y="1035" fill="#13855d" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">SCK</text>
+<polyline points="640,600 850,600" fill="none" stroke="#d33b40" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="640" cy="600" r="6" fill="#d33b40"/>
+<circle cx="850" cy="600" r="6" fill="#d33b40"/>
+<text x="868" y="585" fill="#d33b40" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">VCC</text>
+<polyline points="690,640 850,640" fill="none" stroke="#39465a" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="690" cy="640" r="6" fill="#39465a"/>
+<circle cx="850" cy="640" r="6" fill="#39465a"/>
+<text x="868" y="625" fill="#39465a" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">GND</text>
+<polyline points="640,850 850,850" fill="none" stroke="#d33b40" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="640" cy="850" r="6" fill="#d33b40"/>
+<circle cx="850" cy="850" r="6" fill="#d33b40"/>
+<text x="868" y="835" fill="#d33b40" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">VDD</text>
+<polyline points="690,890 850,890" fill="none" stroke="#39465a" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="690" cy="890" r="6" fill="#39465a"/>
+<circle cx="850" cy="890" r="6" fill="#39465a"/>
+<text x="868" y="875" fill="#39465a" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">GND</text>
+<polyline points="690,930 850,930" fill="none" stroke="#39465a" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="690" cy="930" r="6" fill="#39465a"/>
+<circle cx="850" cy="930" r="6" fill="#39465a"/>
+<text x="868" y="915" fill="#39465a" font-size="21" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">L/R</text>
+<text x="80" y="535" fill="#17233b" font-size="20" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">Подписаны номера GPIO.</text>
+<text x="80" y="565" fill="#17233b" font-size="20" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">Ориентируйтесь на надписи</text>
+<text x="80" y="595" fill="#17233b" font-size="20" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">на своей плате.</text>
+<text x="80" y="765" fill="#17233b" font-size="24" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">USB → ноутбук</text>
+<text x="80" y="807" fill="#17233b" font-size="19" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">Питание и прошивка</text>
+<text x="80" y="837" fill="#17233b" font-size="19" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">Голос звучит через</text>
+<text x="80" y="867" fill="#17233b" font-size="19" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">колонки ноутбука.</text>
+<text x="54" y="1132" fill="#17233b" font-size="24" font-family="Segoe UI, sans-serif" font-weight="700" dominant-baseline="text-before-edge" text-anchor="start">Важно</text>
+<text x="54" y="1170" fill="#17233b" font-size="20" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">• SCK дисплея → GPIO21. SCK микрофона → GPIO6. Не соединять их вместе.</text>
+<text x="54" y="1202" fill="#17233b" font-size="20" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">• VDD микрофона — не 5 В. L/R соединить с общей землёй GND.</text>
+<text x="54" y="1234" fill="#17233b" font-size="19" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">• Если на INMP441 нет резистора SD–GND 100 кОм, добавьте его отдельно.</text>
+<text x="54" y="1265" fill="#5c6980" font-size="16" font-family="Segoe UI, sans-serif" font-weight="400" dominant-baseline="text-before-edge" text-anchor="start">Схематическое расположение контактов. Соединены только линии с точками в месте пересечения.</text>
+</svg>
